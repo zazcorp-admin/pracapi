@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import pytz
+import djongo
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +27,7 @@ SECRET_KEY = 'django-insecure-vmk700emmpdd#zw+sd$&s#(y5keuay%fe9n$11ng=32@z_kz&+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['handsome-ruby-nightgown.cyclic.cloud', '127.0.0.1']
+ALLOWED_HOSTS = ['pracapi.cyclic.cloud', '127.0.0.1']
 
 
 # Application definition
@@ -37,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'core',
+    'djongo',
+    'pytz'
 ]
 
 MIDDLEWARE = [
@@ -73,12 +78,38 @@ WSGI_APPLICATION = 'pracapi.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    'default':{
+        'ENGINE' : 'djongo',
+        'NAME': 'pracapi',
+        "CLIENT":{
+            'host': 'mongodb+srv://zaz:kFiG3Ge0CLQEI3HV@pracapi.zjq8q6t.mongodb.net/',
+            'username': 'zaz',
+            'password': 'kFiG3Ge0CLQEI3HV'
+        }
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'djongo',
+#         'NAME': 'pracapi',
+#         'CLIENT': {
+#             'host': 'mongodb+srv://zaz:kFiG3Ge0CLQEI3HV@pracapi.zjq8q6t.mongodb.net/pracapi',
+#             'username': 'zaz',
+#             'password': 'kFiG3Ge0CLQEI3HV'
+#         }
+#     }
+# }
+
 
 
 # Password validation

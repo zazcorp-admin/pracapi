@@ -1,7 +1,13 @@
 from django.shortcuts import render, HttpResponse
+from .models import *
 
 # Create your views here.
 
 
 def index(request):
-	return HttpResponse("This is just a testing for cyclick")
+	subs = Subscribed.objects.all()
+
+	context = {
+		'subs' : subs
+	}
+	return render(request, 'core/home.html', context)

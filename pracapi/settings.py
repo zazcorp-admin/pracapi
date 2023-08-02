@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-vmk700emmpdd#zw+sd$&s#(y5keuay%fe9n$11ng=32@z_kz&+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['pracapi.cyclic.cloud', '127.0.0.1']
+ALLOWED_HOSTS = ['pracapi.onrender.com', '127.0.0.1']
 
 
 # Application definition

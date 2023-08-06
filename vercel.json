@@ -1,0 +1,27 @@
+{
+    "version":2,
+    "build":[
+        {
+            "src":"pracapi/wsgi.py",
+            "use": "@vercel/python",
+            "config": {"maxLambdaSize": "15mb", "rubtime": "3.11"}
+        },
+        {
+            "src": "build_files.sh",
+            "user": "@vercel/static-build",
+            "config":{
+                "distDir": "staticfiles_build"
+            }
+        }
+    ],
+    "routes" :[
+        {
+            "src": "/static/(.*)",
+            "dest": "/static/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "pracapi/wsgi"
+        }
+    ]
+}
